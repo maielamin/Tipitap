@@ -72,9 +72,7 @@ var pageYouLost = document.querySelector('#pageYouLost');
 // --
 var lvlLostScore = document.querySelector('#lvlLostScore');
 var lvlLostBestScore = document.querySelector('#lvlLostBestScore');
-var lvlLostTtl = document.querySelector('#lvlLostTtl');
 var lvlLostTryAgainBtn = document.querySelector('#lvlLostTryAgainBtn');
-var lvlLostIcon = document.querySelector('#lvlLostIcon');
 
 
 // High Score Page
@@ -150,8 +148,9 @@ toolsBox = {
   hideSplashScreen: function() {
     splashScreenLogo.classList.add('fadeOut-animation');
     toolsBox.delay(function() {
-      toolsBox.showPage(pageTutorial);
       tutText.start();
+      alert("Tipitap is intentionally designed to be addictive. Take this as a warning! You will only score a point if another player has selected the same post. You might sense frustration and through the strategy of the game manipulative tactics of social media will become transparent.");
+      toolsBox.showPage(pageTutorial);
       toolsBox.hidePage(pageSplash);
     }, 1500); // Show after 1.5s because the fadeOut-animation takes 0.5s and has 1s delay
   },
@@ -214,13 +213,13 @@ toolsBox = {
 // ---------------------- Tutorial text ---------------------- //
 var tutText = {
   start: function() {
-    var example = ["GET READY", "SET", "GO!", "Click the heart"];      
+    var example = ["Click to play!"];      
     function textSequence(i) {
       if( example.length  > i ){
         setTimeout(function() {
           document.getElementById("Tutorial_text").innerHTML = example[i];
           textSequence(++i);
-        }, 1000); // 1 second (in milliseconds)
+        }, 1500); // 1 second (in milliseconds)
       }
     }   
     textSequence(0);
@@ -228,34 +227,12 @@ var tutText = {
 }
 
 // ---------------------- Strip ---------------------- //
-var randomNumber = Math.floor(Math.random() * 10)+1;
+var randomNumber = Math.floor(Math.random() * 200)+25;
 console.log(randomNumber);
 
-var strip = {
-  start: function() {
-    console.log("strip.start called");
-    var strip = document.getElementById('strip');
-    for( var i = 0; i < randomNumber; i++){
-      
-      if(Math.random() > 0.5){
-        var ele = document.createElement('div');
-
-        ele.classList.add('post');
-        ele.classList.add('unliked');
-        strip.appendChild(ele);
-      } else {
-        var ele = document.createElement('div');
-
-        ele.classList.add('post');
-        ele.classList.add('grey');
-        strip.appendChild(ele);
-      }
-      
-    }
-   }
-
-}
-
+clickNo = 1;
+var clickNo = Math.floor(Math.random() * 11);
+console.log(clickNo);
 // ------------------------------------------------------ //
 
 var timeEngine = {
@@ -313,7 +290,6 @@ var timeEngine = {
   }
 }
 
-
 // ----------------------------------------------------------------- //
 // -------------------- Tappable Circle Object -------------------- //
 
@@ -321,30 +297,90 @@ var circlesEngine = {
   create: function(typeOfCircle, numOfCircles) {
     console.log("circlesEngine.create called");
     var ele = document.getElementById('strip');
-    strip.start();
-    var element = document.createElement('div');
+    //strip.start();
+    //var element = document.createElement('div');
 
-    switch (typeOfCircle.toLowerCase()) {
-      case ".evil-circle":
-        element.setAttribute('class', 'grey');
-        gameSpace.appendChild(element);
-        toolsBox.onClickNTouchstart(element, function(){ // on click & touch start function
-          circlesEngine.evilCircleTap();
-        });
-        return element;
-        break;
+    var strip = {
+      start: function() {
+        let countHeartsOnly = 0;
 
-      case ".good-circle":
-        element.setAttribute('class', 'unliked');
-        gameSpace.appendChild(ele);
-        toolsBox.onClickNTouchstart(ele, function(){ // on click & touch start function
-          circlesEngine.goodCircleTap(typeOfCircle, numOfCircles);
-        });
-        return element;
-        break;
+        console.log("strip.start called");
+        var strip = document.getElementById('strip');
+        var clickCount = 0;
+        for( var i = 0; i < randomNumber; i++){
+          
+          if(Math.random() > 0.5){
+            countHeartsOnly++;
+            var element = document.createElement('div');
+            element.setAttribute('class', 'unliked');
+            element.classList.add('post');
+            element.classList.add('unliked');
+            element.classList.add('hello');
+            strip.appendChild(element);
+            console.log("added element");
 
-      default:
+            element.addEventListener("click", function(){
+              // console.log("clicked on", element, this);
+              
+              this.classList.add('class', 'liked');
+              audioPool.playSound(touchBlue);
+              gameEngine.goodCircleTap();
+              gameSpace.appendChild(element);
+              
+            });
+            //return element;
+          } else {
+            var element = document.createElement('div');
+    
+            element.classList.add('post');
+            element.classList.add('grey');
+            strip.appendChild(element);
+
+            element.addEventListener("click", function(){
+              console.log("clicked on");
+              audioPool.playSound(touchRed);
+            });
+            //return element;
+          }
+          
+        }
+        
+        console.log(randomNumber, countHeartsOnly)
+        gameEngine.tapsGoal = countHeartsOnly
+        levelsEngine.levels.tapsGoal = countHeartsOnly
+        gameEngine.updateTapCount(0, countHeartsOnly);
+
+       }
+    
     }
+
+    strip.start();
+    // reset the time and start it
+    
+    timeEngine.reset();
+    timeEngine.start(55);
+
+    // switch (typeOfCircle.toLowerCase()) {
+    //   case ".evil-circle":
+    //     element.setAttribute('class', 'grey');
+    //     gameSpace.appendChild(element);
+    //     toolsBox.onClickNTouchstart(element, function(){ // on click & touch start function
+    //       circlesEngine.evilCircleTap();
+    //     });
+    //     return element;
+    //     break;
+
+    //   case ".good-circle":
+    //     element.setAttribute('class', 'unliked');
+    //     gameSpace.appendChild(ele);
+    //     toolsBox.onClickNTouchstart(ele, function(){ // on click & touch start function
+    //       circlesEngine.goodCircleTap(typeOfCircle, numOfCircles);
+    //     });
+    //     return element;
+    //     break;
+
+    //   default:
+    // }
   },
   destroy: function(circle){ // destroy all the circles of a specific type
     // Convert the Node List into in Array and delete all the items in it
@@ -387,7 +423,7 @@ var circlesEngine = {
   },
   goodCircleTap: function(typeOfCircle, numOfCircles){
     gameEngine.goodCircleTap(); // do actions in game engine
-    circlesEngine.add(typeOfCircle, numOfCircles); // re-generate good circles
+    //circlesEngine.add(typeOfCircle, numOfCircles); // re-generate good circles //we dont want to add more circles
 
     evilCircles = document.querySelectorAll('.evil-circle');
     if (evilCircles.length > 0) { // recreate evil circles if there are any in the game space
@@ -412,7 +448,7 @@ var circlesEngine = {
 var gameEngine = { 
   // Current level settings
   levelNum:1, // current level number
-  levelTime: 30, // Time in seconds for the current level
+  levelTime: 55, // Time in seconds for the current level. As Facebook's current head of marketing bragged in this speech, the average millennial checks his or her phone 157 times daily. That's a total average of 145 minutes every day that we're trying to feel connected, validated, and liked.
   tapNum: 0, // how many times it was tapped so far
   tapsGoal: randomNumber, // Number of taps required to finish the level
   tapValue: 13, // How much does the tap add to the score
@@ -427,7 +463,7 @@ var gameEngine = {
   },
   updateLevel: function(levelNum) { // Update the level number in the game space and add to engine
     gameEngine.levelNum = levelNum;
-    gmStatsLvlNumb.innerHTML = "Level " + gameEngine.levelNum;
+    gmStatsLvlNumb.innerHTML = "Likes";
   },
   updateTapCount: function(tapNum, tapsGoal) { // Update tabs count in the game space & add to engine
     gameEngine.tapNum = tapNum;
@@ -483,12 +519,14 @@ var gameEngine = {
     );
   },
   checkTapsCount: function() {
-    if (gameEngine.tapNum >= gameEngine.tapNum) {
+    if (gameEngine.tapNum >= gameEngine.tapsGoal) {
       if (timeEngine.timeLeft > 0) { // score one after one 
-        gameEngine.score();
+        toolsBox.hidePage(pagePlayArea);
+        toolsBox.showPage(pageLevelPassed);
       }
       gameEngine.levelPassed();
-    }
+    
+  }
   },
   goodCircleTap: function() {
     gameEngine.tapNum = gameEngine.tapNum + 1;
@@ -520,24 +558,13 @@ var gameEngine = {
     toolsBox.hidePage(pagePlayArea);
     toolsBox.showPage(pageYouLost);
     gameEngine.stop();
-
   },
   deadlyTap: function() { // tapping a red circle
     console.log('You lost! 🐜');
-    lvlLostTtl.innerHTML = "You Lost";
-    if (lvlLostIcon.classList.contains('times-up-icon')) {
-      lvlLostIcon.classList.remove('times-up-icon');
-      lvlLostIcon.classList.add('you-lost-icon');
-    }
     gameEngine.gameLost();
   },
   timesUp: function() {
     console.log('time is up! ⏱');
-    lvlLostTtl.innerHTML = "Time's Up";
-    if (lvlLostIcon.classList.contains('you-lost-icon')) {
-      lvlLostIcon.classList.remove('you-lost-icon');
-      lvlLostIcon.classList.add('times-up-icon');
-    }
     gameEngine.gameLost();
   },
   levelPassed: function() {
@@ -548,10 +575,12 @@ var gameEngine = {
     // update level passed page info
     lvlPssdTtl.innerHTML = "Level " + gameEngine.levelNum;
     if (gameEngine.bonusScore > 0) { // if there is a bonus, display score without bonus
-      lvlPssdScore.innerHTML = gameEngine.score - gameEngine.bonusScore;
+      lvlPssdScore.innerHTML = gameEngine.score + 0;
     } else {
       lvlPssdScore.innerHTML = gameEngine.score;
     }
+
+    console.log("passed score", gameEngine.score);
 
     gameEngine.updateLevel(gameEngine.levelNum + 1); // Update level number in the game engine
 
@@ -582,7 +611,7 @@ levelsEngine = {
   levels : [
     {
       levelNum: 1,
-      time: 30, // Time in seconds for the current level
+      time: 55, // Time in seconds for the current level
       tapValue: 1,
       tapsGoal: randomNumber,
       goodCirclesCount: 1,
@@ -601,7 +630,7 @@ levelsEngine = {
   },
   resetLevels: function() { // TODO
     levelsEngine.levels = [];
-    levelsEngine.addNewLevel(1, 30, 1, randomNumber, 1, 4);
+    levelsEngine.addNewLevel(1, 55, 1, randomNumber, 1, 4);
   }
 }
 
@@ -729,7 +758,7 @@ toolsBox.onClickNTouchstart(gmStatsPauseBtn, function() {
 // -- Restart button
 toolsBox.onClickNTouchstart(pmRstrtLvlBtn, function() {
   audioPool.playSound(buttonTap);
-  toolsBox.showPage(pageGameMenu);
+  toolsBox.showPage(pageTutorial);
   toolsBox.hidePage(pagePauseMenu);
   gameEngine.stop();
 });

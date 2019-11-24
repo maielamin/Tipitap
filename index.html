@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Tipitap</title>
+	<title>Tipitap game</title>
 	<meta name="description" content="A tapping game built with Javascript"/>
 	<link href="style.css" rel="stylesheet">
 	<meta charset="UTF-8">
@@ -62,11 +62,6 @@
 		<!-- GAME MENU PAGE -->
 		<div id="pageGameMenu" class="page-cont page-game-menu page-faded-bg">
 			<div class="fixed-75w-wrapper">
-				<div class="gm-menu-header-cont">
-					<div class="tpbl-circle c-blue gm-menu-logo-bg"></div>
-					<h1 class="gm-menu-title">Tap Tap Tap</h1>
-					<h2 class="gm-menu-subtitle">Every Tap Matters</h2>
-				</div>
 				<button id="newGameBtn" class="gm-btn btn-blue" type="button" name="button">New Game</button>
 				<!-- <button id="highScoresBtn" class="gm-btn" type="button" name="button">Best Score</button> -->
 				<button id="aboutBtn" class="gm-btn" type="button" name="button">About</button>
@@ -127,7 +122,7 @@
 					<img class="bottom" src="images/T1.jpg" alt="Image 1" />
 					<img class="top" src="images/T2.jpg" alt="Image 2" />
 					<!--Tutorial text-->
-					<div id="Tutorial_text"></div>
+					<div id="Tutorial_text">Tap the heart<br><br>Scroll down</div>
 			</div>	
 			</div>
 		</div>
@@ -164,7 +159,7 @@
 					<!-- level number -->
 					<div class="gm-stats-vcont">
 						<div class="stat-wrapper text-align-right">
-							<div id="gmStatsLvlNumb" class="gm-stats-title">Level 7</div>
+							<div id="gmStatsLvlNumb" class="gm-stats-title">Total</div>
 							<div class="gm-stats-value">
 								<span id="gmStatsCurrentTapCount" class="gm-stats-tap-count">16</span>
 								<span id="gmStatsTotalTapCount">/20</span>
@@ -190,7 +185,7 @@
 					<div class="info-screen-ttl-txt-bld">GAME PAUSED</div>
 				</div>
 				<div class="info-screen-txt-cont">
-					<div class="info-screen-body-txt-reg">Score</div>
+					<div class="info-screen-body-txt-reg">Likes</div>
 					<div id="lvlPausedScore" class="lvl-fnshd-score-nmb">521</div>
 				</div>
 				<div class="puz-menu-btnz-cont">
@@ -203,39 +198,26 @@
 		<!-- YOU LOST PAGE -->
 		<div id="pageYouLost" class="page-cont page-you-lost page-faded-bg anmtd-grdnt-bg rd-grdnt-bg no-bg">
 			<div class="fixed-75w-wrapper">
-				<div class="info-screen-title-cont">
-					<div id="lvlLostIcon" class="info-screen-icon you-lost-icon"></div>
-					<div class="info-screen-ttl-txt-bld">Game Over</div>
-					<div id="lvlLostTtl" >You Lost</div>
+				<div class="info-screen-title-cont"style="margin-top:-150px;">
+						<div id="lvlLostScore" class="lvl-fnshd-score-nmb">746</div>
+						<div class="info-screen-ttl-txt-bld">Game Over</div>
 				</div>
-				<div class="info-screen-txt-cont">
-					<div class="info-screen-body-txt-reg">Score</div>
-					<div id="lvlLostScore" class="lvl-fnshd-score-nmb">746</div>
-					<!-- <div class="info-screen-body-txt-reg">Best Score</div>
-					<div id="lvlLostBestScore" class="lvl-fnshd-score-nmb">146</div> -->
-				</div>
-				<div class="sbmt-tryagain-txt">Try again?</div>
-				<div id="lvlLostTryAgainBtn" class="tpbl-circle c-white submit-circle"></div>
+				<div id="lvlLostTryAgainBtn"><a href="javascript:window.location.reload(true)">RESTART</a></div>
+				<img src="images/restart.png" style="margin: auto; position: absolute; bottom: -320px; left: 0; right: 0; height: 396.55px; width: 156.72;3z-index: -1;"> 
 			</div>
 		</div>
-
-		  <!--The restart screen which gets triggered when a grey post is touched or when the timer finishes-->
-		  <div id="restart">
-			<img src="images/restart.png" style="margin: auto; position: absolute; bottom: 0; left: 0; right: 0; height: 65%;"> 
-			<a href="javascript:window.location.reload(true)">RESTART</a>
-		</div> 
 
 		<!-- LEVEL PASSED PAGE -->
 		<div id="pageLevelPassed" class="page-cont page-level-passed page-faded-bg anmtd-grdnt-bg grn-grdnt-bg no-bg">
 			<div class="fixed-75w-wrapper">
 				<div class="info-screen-title-cont">
 					<div class="info-screen-icon flag-icon"></div>
-					<div id="lvlPssdTtl">Level 2</div>
+					<div id="lvlPssdTtl">Likes</div>
 					<div class="info-screen-ttl-txt-bld">Passed</div>
 				</div>
 				<div class="info-screen-txt-cont">
-					<div class="info-screen-body-txt-reg">Score</div>
-					<div id="lvlPssdScore" class="lvl-fnshd-score-nmb">521</div>
+					<div class="info-screen-body-txt-reg">Likes</div>
+					<div id="lvlPssdScore" class="lvl-fnshd-score-nmb">0</div>
 				</div>
 				<div id="lvlPssdContinueNextLvlBtn" class="tpbl-circle c-white submit-circle"></div>
 			</div>
