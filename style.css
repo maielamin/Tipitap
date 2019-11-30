@@ -31,8 +31,6 @@ html {
        url('fonts/LCDSolid.ttf') format('truetype'),
        url('fonts/LCDSolid.woff') format('woff'),
        url('fonts/LCDSolid.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
 }
 
 body{
