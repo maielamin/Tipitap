@@ -23,12 +23,12 @@ html {
   transition: all ease 0.2s;
 }
 @font-face{
-  font-family: 'LCD Solid';
+  font-family: 'slkscre';
   src: url('fonts/slkscre.ttf'),
 }
 
 body{
-  font-family: 'LCD Solid';
+  font-family: 'slkscre';
   font-weight: normal;
   font-style: normal;
   font-size: 2.2rem; /* base font size is 22px */
@@ -233,7 +233,7 @@ hr {
   position: relative;
   margin: auto;
   top: 90%;
-  font-family: 'LCD Solid';
+  font-family: 'slkscre';
   font-size: 1.2rem;
   z-index:1;
   display:none;
@@ -398,7 +398,7 @@ hr {
   display: none;
 }
 #restart a{
-  font-family: 'LCD Solid';
+  font-family: 'slkscre';
   color:black;
 }
 /*  -------- Game menu page -------- */
@@ -559,7 +559,7 @@ hr {
 }*/
 
 #Tutorial_text{
-  font-family: 'LCD Solid';
+  font-family: 'slkscre';
   position: absolute;
   margin: auto;
   top: 150px; left: 0; right: 0;
