@@ -39,11 +39,11 @@ var gmStatsCurrentTapCount = document.querySelector('#gmStatsCurrentTapCount');
 var gmStatsTotalTapCount = document.querySelector('#gmStatsTotalTapCount');
 
 // Game Menu Page
-var pageGameMenu = document.querySelector('#pageGameMenu');
+//var pageGameMenu = document.querySelector('#pageGameMenu');
 // --
-var newGameBtn = document.querySelector('#newGameBtn');
+//var newGameBtn = document.querySelector('#newGameBtn');
 var highScoresBtn = document.querySelector('#highScoresBtn');
-var aboutBtn = document.querySelector('#aboutBtn');
+//var aboutBtn = document.querySelector('#aboutBtn');
 
 // Tutorial Page
 var pageTutorial = document.querySelector('#pageTutorial');
@@ -90,13 +90,13 @@ var abtPageBackBtn = document.querySelector('#abtPageBackBtn');
 // ------- Show Hide Pages Control Panel ------- //
 var playDelayPageToggle = document.getElementById('playDelayPageToggle');
 var playAreaPageToggle = document.getElementById('playAreaPageToggle');
-var gameMenuPageToggle = document.getElementById('gameMenuPageToggle');
+//var gameMenuPageToggle = document.getElementById('gameMenuPageToggle');
 var tutorialPageToggle = document.getElementById('tutorialPageToggle');
 var pauseMenuPageToggle = document.getElementById('pauseMenuPageToggle');
 var levelPassedPageToggle = document.getElementById('levelPassedPageToggle');
 var youLostPageToggle = document.getElementById('youLostPageToggle');
 var highScorePageToggle = document.getElementById('highScorePageToggle');
-var aboutPageToggle = document.getElementById('aboutPageToggle');
+//var aboutPageToggle = document.getElementById('aboutPageToggle');
 var splashPageToggle = document.getElementById('splashPageToggle');
 
 var pagesTogglesArray = [
@@ -105,9 +105,10 @@ var pagesTogglesArray = [
   youLostPageToggle, highScorePageToggle, aboutPageToggle, splashPageToggle
 ]
 var pagesArray = [
-  pagePlayArea, pageGameMenu, pageTutorial, pagePlayDelay,
-  pagePauseMenu, pageLevelPassed,
-  pageYouLost, pageHighScore, pageAbout, pageSplash
+  pagePlayArea, //pageGameMenu, 
+  pageTutorial, pagePlayDelay,
+  pagePauseMenu, pageLevelPassed, pageYouLost, pageHighScore, //pageAbout, 
+  pageSplash
 ]
 
 // show/hide pages if the checkbox is checked
@@ -149,7 +150,7 @@ toolsBox = {
     splashScreenLogo.classList.add('fadeOut-animation');
     toolsBox.delay(function() {
       tutText.start();
-      alert("Tipitap is intentionally designed to be addictive. Take this as a warning! You will only score a point if another player has selected the same post. You might sense frustration and through the strategy of the game manipulative tactics of social media will become transparent.");
+      alert("Tipitap is intentionally designed to be addictive. Take this as a warning! You will only score a point if another player has selected the same post. You might sense frustration but the game is meant to show manipulative tactics of social media through the strategy of the game.");
       toolsBox.showPage(pageTutorial);
       toolsBox.hidePage(pageSplash);
     }, 1500); // Show after 1.5s because the fadeOut-animation takes 0.5s and has 1s delay
@@ -219,15 +220,31 @@ var tutText = {
         setTimeout(function() {
           document.getElementById("Tutorial_text").innerHTML = example[i];
           textSequence(++i);
-        }, 1500); // 1 second (in milliseconds)
+        }, 20000); // 1 second (in milliseconds)
       }
     }   
     textSequence(0);
    }
 }
-
+// ---------------------- Tutorial text ---------------------- //
+var randomplayers = {
+  start: function() {
+    var example = ["Computer joined","Computer liked", "Player40700 joined", "Player40700 liked","Computer liked","Player1070 joined","Computer liked","Player1070 liked", "Player40700 liked"];      
+    var i = document.getElementById("randomplayers");
+    function textSequence(i) {
+      if( example.length  > i ){
+        setTimeout(function() {
+          document.getElementById("randomplayers").innerHTML = example[i];
+          i.style.display = "block";
+          textSequence(++i);
+        }, 1000); // 1 second (in milliseconds)
+      }
+    }   
+    textSequence(0);
+   }
+}
 // ---------------------- Strip ---------------------- //
-var randomNumber = Math.floor(Math.random() * 200)+25;
+var randomNumber = Math.floor(Math.random() * 1000)+ 1; //you can like up to 1000 pictures before your account gets banned on Instagram
 console.log(randomNumber);
 
 clickNo = 1;
@@ -315,7 +332,6 @@ var circlesEngine = {
             element.setAttribute('class', 'unliked');
             element.classList.add('post');
             element.classList.add('unliked');
-            element.classList.add('hello');
             strip.appendChild(element);
             console.log("added element");
 
@@ -326,8 +342,14 @@ var circlesEngine = {
               audioPool.playSound(touchBlue);
               gameEngine.goodCircleTap();
               gameSpace.appendChild(element);
-              
+              this.removeEventListener('click',arguments.callee,false);//this makes sure the element gets clicked once
             });
+            element.addEventListener("mouseout", function(){
+            //console.log("vid", element, this);
+            this.classList.add('class', 'others');
+            randomplayers.start();
+            });
+          
             //return element;
           } else {
             var element = document.createElement('div');
@@ -339,6 +361,7 @@ var circlesEngine = {
             element.addEventListener("click", function(){
               console.log("clicked on");
               audioPool.playSound(touchRed);
+              gameEngine.gameLost();
             });
             //return element;
           }
@@ -573,7 +596,7 @@ var gameEngine = {
     timeEngine.stop(); // stop the count down
 
     // update level passed page info
-    lvlPssdTtl.innerHTML = "Level " + gameEngine.levelNum;
+    //lvlPssdTtl.innerHTML = "Level " + gameEngine.levelNum;
     if (gameEngine.bonusScore > 0) { // if there is a bonus, display score without bonus
       lvlPssdScore.innerHTML = gameEngine.score + 0;
     } else {
@@ -754,7 +777,7 @@ toolsBox.onClickNTouchstart(gmStatsPauseBtn, function() {
   lvlPausedScore.innerHTML = gameEngine.score;
 });
 
-// Pause Menue Buttons
+// Pause Menu Buttons
 // -- Restart button
 toolsBox.onClickNTouchstart(pmRstrtLvlBtn, function() {
   audioPool.playSound(buttonTap);
@@ -772,27 +795,27 @@ toolsBox.onClickNTouchstart(pmCntnuGmBtn, function() {
 
 // About Page Buttons
 // -- Back Button
-abtPageBackBtn.addEventListener('click', function() {
-  audioPool.playSound(buttonTap);
-  toolsBox.showPage(pageGameMenu);
-  toolsBox.hidePage(pageAbout);
-  toolsBox.pageAbout.stopMovingCredits(); // stop animating the credits in the about page
-}, false);
+//abtPageBackBtn.addEventListener('click', function() {
+  //audioPool.playSound(buttonTap);
+  //toolsBox.showPage(pageGameMenu);
+  //toolsBox.hidePage(pageAbout);
+  //toolsBox.pageAbout.stopMovingCredits(); // stop animating the credits in the about page
+//}, false);
 
 // Game Menu Buttons
 // -- New Game Button
-newGameBtn.addEventListener('click', function() {
-  audioPool.playSound(buttonTap);
-  toolsBox.showPage(pageTutorial);
-  toolsBox.hidePage(pageGameMenu);
-}, false);
+//newGameBtn.addEventListener('click', function() {
+  //audioPool.playSound(buttonTap);
+  //toolsBox.showPage(pageTutorial);
+  //toolsBox.hidePage(pageGameMenu);
+//}, false);
 // -- About Button
-aboutBtn.addEventListener('click', function() {
-  audioPool.playSound(buttonTap);
-  toolsBox.showPage(pageAbout);
-  toolsBox.hidePage(pageGameMenu);
-  toolsBox.pageAbout.moveCredits(); // animate the credits in the about page
-}, false);
+//aboutBtn.addEventListener('click', function() {
+  //audioPool.playSound(buttonTap);
+  //toolsBox.showPage(pageAbout);
+  //toolsBox.hidePage(pageGameMenu);
+  //toolsBox.pageAbout.moveCredits(); // animate the credits in the about page
+//}, false);
 
 
 

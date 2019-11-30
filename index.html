@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<title>Tipitap game</title>
-	<meta name="description" content="A tapping game built with Javascript"/>
+	<meta name="description" content="Tipitap is intentionally designed to be addictive. Take this as a warning! You will only score a point if another player has selected the same post. You might sense frustration but the game is meant to show manipulative tactics of social media through the strategy of the game."/>
 	<link href="style.css" rel="stylesheet">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -55,20 +55,20 @@
 		<!-- SPLASH/LOADING PAGE -->
 		<div id="pageSplash" class="page-cont page-splash page-faded-bg">
 			<div class="fixed-75w-wrapper">
-				<div id="splashScreenLogo"><img src="images/loading.png" style=" margin: auto; position: absolute; top: -76px; left: 0; right: 0; height: 55vh; z-index: 1;"></div>
+				<div id="splashScreenLogo"><img src="images/loading.png" style="margin: auto; position: absolute; bottom: -320px; left: 0; right: 0; height: 396.55px; width: 156.72;z-index: -1;"></div>
 			</div>
 		</div>
 
 		<!-- GAME MENU PAGE -->
-		<div id="pageGameMenu" class="page-cont page-game-menu page-faded-bg">
+		<!--<div id="pageGameMenu" class="page-cont page-game-menu page-faded-bg">
 			<div class="fixed-75w-wrapper">
-				<button id="newGameBtn" class="gm-btn btn-blue" type="button" name="button">New Game</button>
+				<button id="newGameBtn" class="gm-btn btn-blue" type="button" name="button">New Game</button>-->
 				<!-- <button id="highScoresBtn" class="gm-btn" type="button" name="button">Best Score</button> -->
-				<button id="aboutBtn" class="gm-btn" type="button" name="button">About</button>
+				<!--<button id="aboutBtn" class="gm-btn" type="button" name="button">About</button>
 			</div>
-		</div>
+		</div>-->
 
-		<!-- ABOUT PAGE -->
+		<!-- ABOUT PAGE 
 		<div id="pageAbout" class="page-cont page-about page-faded-bg anmtd-grdnt-bg blu-grdnt-bg no-bg">
 			<div class="fixed-75w-wrapper">
 				<div class="info-screen-title-cont">
@@ -93,7 +93,7 @@
 				</div>
 				<div id="abtPageBackBtn" class="tpbl-circle c-white submit-circle"></div>
 			</div>
-		</div>
+		</div>-->
 
 		<!-- NEW HIGH SCORE PAGE -->
 		<div id="pageHighScore" class="page-cont page-high-score page-faded-bg anmtd-grdnt-bg rd-grdnt-bg no-bg">
@@ -119,8 +119,8 @@
 			<div class="fixed-100w-wrapper">
 			<div id="tutPgStartGameBtn" >
 					<!--Tutorial images-->  
-					<img class="bottom" src="images/T1.jpg" alt="Image 1" />
-					<img class="top" src="images/T2.jpg" alt="Image 2" />
+					<img class="bottom" src="images/tappedHeart.gif" alt="Image 1" />
+					<!--<img class="top" src="images/tappedHeart.gif" alt="Image 2" />--> 
 					<!--Tutorial text-->
 					<div id="Tutorial_text">Tap the heart<br><br>Scroll down</div>
 			</div>	
@@ -133,17 +133,17 @@
 				<div class="" id="playDelayNum">
 					3
 				</div>
+				<div id="connecting players">Connecting players...</div>
 			</div>
 		</div>
 
 
 		<!-- GAME PLAY AREA PAGE -->
 		<div id="pagePlayArea" class="page-cont page-play-area">
-
+			<div id="randomplayers">Computer joined</div>
 			<div class="game-stats-cont">
 				<!-- time progress bar -->
 				<div id="gmStatsTimeProgress" class="gm-stats-time-progress"></div>
-
 				<div class="gm-stats-wrapper">
 					<!-- pause button -->
 					<div class="gm-stats-vcont">
@@ -164,6 +164,7 @@
 								<span id="gmStatsCurrentTapCount" class="gm-stats-tap-count">16</span>
 								<span id="gmStatsTotalTapCount">/20</span>
 							</div>
+
 						</div>
 					</div>
 				</div>
@@ -203,7 +204,7 @@
 						<div class="info-screen-ttl-txt-bld">Game Over</div>
 				</div>
 				<div id="lvlLostTryAgainBtn"><a href="javascript:window.location.reload(true)">RESTART</a></div>
-				<img src="images/restart.png" style="margin: auto; position: absolute; bottom: -320px; left: 0; right: 0; height: 396.55px; width: 156.72;3z-index: -1;"> 
+				<img src="images/restart.png" style="margin: auto; position: absolute; bottom: -320px; left: 0; right: 0; height: 396.55px; width: 156.72;z-index: -1;"> 
 			</div>
 		</div>
 
