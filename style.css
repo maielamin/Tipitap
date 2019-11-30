@@ -21,6 +21,7 @@ html {
 
 *:hover, *:active {
   transition: all ease 0.2s;
+  -webkit-overflow-scrolling: touch;
 }
 @font-face{
   font-family: 'LCD Solid';
