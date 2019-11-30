@@ -1,6 +1,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; /* reseting base font-size to 10px */
+  scroll-behavior: smooth;
 }
 *, *:before, *:after {
   box-sizing: inherit;
