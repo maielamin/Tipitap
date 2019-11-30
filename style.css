@@ -24,14 +24,16 @@ html {
 }
 @font-face{
   font-family: 'LCD Solid';
-  src: url('fonts/LCD_Solid.ttf') format('truetype'),
-       url('fonts/LCDSolid.otf'),
-       url('fonts/LCDSolid.eot') format('embedded-opentype'),
-       url('fonts/LCDSolid.woff') format('woff');
+  src: url('LCDSolid.woff2') format('woff2'),
+      url('LCDSolid.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body{
   font-family: 'LCD Solid';
+  font-weight: normal;
+  font-style: normal;
   font-size: 2.2rem; /* base font size is 22px */
   background: #ef2200;
   color: white;
