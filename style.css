@@ -24,10 +24,10 @@ html {
 }
 @font-face{
   font-family: 'LCD Solid';
-  src: url('fonts/LCD_Solid.ttf');
-  src: url('fonts/LCDSolid.otf');
-  src: url('fonts/LCDSolid.eot');
-  src: url('fonts/LCDSolid.woff'),
+  src: url('fonts/LCD_Solid.ttf'),
+       url('fonts/LCDSolid.otf'),
+       url('fonts/LCDSolid.eot'),
+       url('fonts/LCDSolid.woff');
 }
 
 body{
