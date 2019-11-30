@@ -23,7 +23,7 @@ html {
 }
 
 body{
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'LCD Solid';
   font-size: 2.2rem; /* base font size is 22px */
   background: #ef2200;
   color: white;
@@ -226,7 +226,7 @@ hr {
   position: relative;
   margin: auto;
   top: 90%;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'LCD Solid';
   font-size: 1.2rem;
   z-index:1;
   display:none;
@@ -391,7 +391,7 @@ hr {
   display: none;
 }
 #restart a{
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'LCD Solid';
   color:black;
 }
 /*  -------- Game menu page -------- */
@@ -552,7 +552,7 @@ hr {
 }*/
 
 #Tutorial_text{
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'LCD Solid';
   position: absolute;
   margin: auto;
   top: 150px; left: 0; right: 0;
