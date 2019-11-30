@@ -21,6 +21,10 @@ html {
 *:hover, *:active {
   transition: all ease 0.2s;
 }
+@font-face{
+  font-family: "Thonburi-Bold";
+  src: url('LCD_Solid.ttf'),
+}
 
 body{
   font-family: 'LCD Solid';
