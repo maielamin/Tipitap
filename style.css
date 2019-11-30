@@ -289,6 +289,7 @@ hr {
   position: relative;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
 #strip {
