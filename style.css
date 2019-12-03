@@ -2,8 +2,7 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; /* reseting base font-size to 10px */
   scroll-behavior: smooth;
-  overflow: hidden;
-  width: 100%;
+  height: calc(100% + 60px);
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -45,13 +44,6 @@ body{
   overflow: hidden; /* always hide scrollbars */
   text-transform: uppercase;
   text-align: center;
-  height: 100%;
-  position: fixed;
-  /* prevent overscroll bounce*/
-  background-color: lightgreen;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
-  /* iOS velocity scrolling */
 }
 
 body, h1,h2,h3, p, menu, button{
