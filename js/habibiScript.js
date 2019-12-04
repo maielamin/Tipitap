@@ -32,6 +32,7 @@ var pagePlayArea = document.querySelector('#pagePlayArea');
 // --
 var gmStatsTimeProgress = document.querySelector('#gmStatsTimeProgress');
 var gmStatsPauseBtn = document.querySelector('#gmStatsPauseBtn');
+var gmStatsInfoBtn = document.querySelector('#gmStatsInfoBtn');
 var gmStatsScore = document.querySelector('#gmStatsScore');
 //var gmStatsLvlNumb = document.querySelector('#gmStatsLvlNumb');
 var gameSpace = document.querySelector('#gameSpace');
@@ -57,7 +58,6 @@ var pagePauseMenu = document.querySelector('#pagePauseMenu');
 var lvlPausedScore = document.querySelector('#lvlPausedScore');
 var pmRstrtLvlBtn = document.querySelector('#pmRstrtLvlBtn');
 var pmCntnuGmBtn = document.querySelector('#pmCntnuGmBtn');
-
 
 // Level passed page
 var pageLevelPassed = document.querySelector('#pageLevelPassed');
@@ -150,7 +150,6 @@ toolsBox = {
     splashScreenLogo.classList.add('fadeOut-animation');
     toolsBox.delay(function() {
       tutText.start();
-      alert("Tipitap is intentionally designed to be addictive. Take this as a warning! You will only score a point if another player has selected the same post. You might sense frustration but the game is meant to show manipulative tactics of social media through the strategy of the game.");
       toolsBox.showPage(pageTutorial);
       toolsBox.hidePage(pageSplash);
     }, 1500); // Show after 1.5s because the fadeOut-animation takes 0.5s and has 1s delay
@@ -775,6 +774,12 @@ toolsBox.onClickNTouchstart(gmStatsPauseBtn, function() {
   toolsBox.showPage(pagePauseMenu);
   toolsBox.hidePage(pagePlayArea);
   lvlPausedScore.innerHTML = gameEngine.score;
+});
+
+// -- Info game button
+toolsBox.onClickNTouchstart(gmStatsInfoBtn, function() {
+  audioPool.playSound(buttonTap);
+  alert("Tipitap is an open-source gamified Instagram, demonstrating the manipulative tactics the platform uses through the strategy of the game. The game inspired by the English saying Tit for tat meaning "equivalent retaliation". It developed from "tip for tap", first used in 1558. It is also a highly effective strategy in game theory. The first player using this strategy will first cooperate, then subsequently replicate an opponent's previous action which is also liking a post to score. The number of posts that can be liked is up to a maximum of 1000 (because if you like this many posts in a day, Instagram bans your account), but the number of posts that can be liked varies every time the game is refreshed. Mimicking how Instagram refreshes the user with new photos whenever they open the app and display the images through an infinite, but the user not always tapping all the pictures.  The timer is a metaphor for how social media platforms profit from how long we spend on their apps set to a time which as a former head of marketing at Facebook bragged in this speech, the average millennial checks his or her phone 157 times daily. That's a total average of 145 minutes every day that we're trying to feel connected, validated, and liked which if converted to seconds and divided by the number of times equals 55.  The game is intended to be designed as addictive and you can learn more about my development on www.maielamin.com.");
 });
 
 // Pause Menu Buttons
