@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Do after the document fully loaded
 });
 
-window.scrollTo(0,1)
+window.scrollTo(0,-1)
 
 // ===============================================================
 // ================== SHOW/HIDE PAGES - ADMIN ====================
