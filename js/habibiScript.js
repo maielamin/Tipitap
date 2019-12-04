@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Do after the document fully loaded
 });
 
+window.onresize = function() {
+  document.body.height = window.innerHeight;
+}
+window.onresize(); // called to initially set the height.
 
 // ===============================================================
 // ================== SHOW/HIDE PAGES - ADMIN ====================
