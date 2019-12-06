@@ -832,6 +832,10 @@ hr {
   .admin-cp {
     display: none;
   }
+
+  .game-stats-cont {
+    margin-top: 50px;
+  }
 }
 
 @media screen and (max-height: 480px) {
